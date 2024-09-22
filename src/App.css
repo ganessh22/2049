@@ -1,36 +1,209 @@
 .app {
-  background-color: #2a2826;
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-.key-display {
+.dark-theme {
+  background-color: #2a2826;
   color: #f5f5f5;
-  font-size: 24px;
-  height: 30px;
-  margin-bottom: 20px;
+}
+
+.light-theme {
+  background-color: #f0f0f0;
+  color: #333;
 }
 
 .holder {
   width: 40vw;
   height: 40vw;
-  background-color: #f5f5f5;
   max-width: 40vh;
   max-height: 40vh;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  gap: 2px;
-  padding: 2px;
+  gap: 10px;
+  padding: 10px;
   border-radius: 15px;
+  background-color: #bbada0;
 }
 
 .cell {
-  background-color: #1e1c1a;
-  border-radius: 15%;
-  padding: 2%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.dark-theme .cell-empty {
+  background-color: #3c3a32;
+}
+
+.light-theme .cell-empty {
+  background-color: #cdc1b4;
+}
+
+.dark-theme .cell {
+  color: #f9f6f2;
+}
+
+.light-theme .cell {
+  color: #776e65;
+}
+
+.dark-theme .cell-2 {
+  background-color: #3d3a33;
+}
+
+.dark-theme .cell-4 {
+  background-color: #4d4a43;
+}
+
+.dark-theme .cell-8 {
+  background-color: #5d5a53;
+}
+
+.dark-theme .cell-16 {
+  background-color: #6d6a63;
+}
+
+.dark-theme .cell-32 {
+  background-color: #7d7a73;
+}
+
+.dark-theme .cell-64 {
+  background-color: #8d8a83;
+}
+
+.dark-theme .cell-128 {
+  background-color: #9d9a93;
+}
+
+.dark-theme .cell-256 {
+  background-color: #adaaa3;
+}
+
+.dark-theme .cell-512 {
+  background-color: #bdbab3;
+}
+
+.dark-theme .cell-1024 {
+  background-color: #cdcac3;
+}
+
+.dark-theme .cell-2048 {
+  background-color: #dddad3;
+}
+
+.dark-theme .cell-4096 {
+  background-color: #edead3;
+}
+
+.dark-theme .cell-8192 {
+  background-color: #fdfad3;
+}
+
+.light-theme .cell-2 {
+  background-color: #eee4da;
+}
+
+.light-theme .cell-4 {
+  background-color: #ede0c8;
+}
+
+.light-theme .cell-8 {
+  background-color: #f2b179;
+}
+
+.light-theme .cell-16 {
+  background-color: #f59563;
+}
+
+.light-theme .cell-32 {
+  background-color: #f67c5f;
+}
+
+.light-theme .cell-64 {
+  background-color: #f65e3b;
+}
+
+.light-theme .cell-128 {
+  background-color: #edcf72;
+}
+
+.light-theme .cell-256 {
+  background-color: #edcc61;
+}
+
+.light-theme .cell-512 {
+  background-color: #edc850;
+}
+
+.light-theme .cell-1024 {
+  background-color: #edc53f;
+}
+
+.light-theme .cell-2048 {
+  background-color: #edc22e;
+}
+
+.light-theme .cell-4096 {
+  background-color: #3c3a32;
+}
+
+.light-theme .cell-8192 {
+  background-color: #2a2a2a;
+}
+
+.theme-toggle {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.dark-theme .theme-toggle {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f5f5f5;
+}
+
+.light-theme .theme-toggle {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(128, 128, 128, 0.3);
+}
+
+.logo {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-size: 48px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
 }
