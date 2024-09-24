@@ -12,6 +12,19 @@ function App() {
 
   useEffect(() => {
     generateRandomSeed();
+
+    const handleKeyPress = (event) => {
+      const key = event.key.toLowerCase();
+      if (['w', 'a', 's', 'd'].includes(key)) {
+        setLastKey(key);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
   }, []);
 
   useEffect(() => {
