@@ -17,6 +17,7 @@ function App() {
       const key = event.key.toLowerCase();
       if (['w', 'a', 's', 'd'].includes(key)) {
         setLastKey(key);
+        moveGrid(key); // Call moveGrid with the pressed key
       }
     };
 
@@ -82,6 +83,61 @@ function App() {
 
   const handleLogoClick = () => {
     window.location.reload();
+  };
+
+  const moveGrid = (direction) => {
+    const newGrid = [...grid]; // Create a copy of the current grid
+
+    const combine = (arr) => {
+      const temp = arr.filter(Boolean); // Remove nulls
+      for (let i = 0; i < temp.length - 1; i++) {
+        if (temp[i] === temp[i + 1]) {
+          temp[i] *= 2; // Combine the numbers
+          temp.splice(i + 1, 1); // Remove the next number
+        }
+      }
+      return [...temp, ...Array(4 - temp.length).fill(null)]; // Fill with nulls
+    };
+
+    if (direction === 'w') {
+      for (let col = 0; col < 4; col++) {
+        const column = [];
+        for (let row = 0; row < 4; row++) {
+          column.push(newGrid[row * 4 + col]);
+        }
+        const combined = combine(column);
+        for (let row = 0; row < 4; row++) {
+          newGrid[row * 4 + col] = combined[row];
+        }
+      }
+    } else if (direction === 'a') {
+      for (let row = 0; row < 4; row++) {
+        const combined = combine(newGrid.slice(row * 4, row * 4 + 4));
+        for (let col = 0; col < 4; col++) {
+          newGrid[row * 4 + col] = combined[col];
+        }
+      }
+    } else if (direction === 's') {
+      for (let col = 0; col < 4; col++) {
+        const column = [];
+        for (let row = 0; row < 4; row++) {
+          column.push(newGrid[row * 4 + col]);
+        }
+        const combined = combine(column.reverse());
+        for (let row = 0; row < 4; row++) {
+          newGrid[row * 4 + col] = combined.reverse()[row];
+        }
+      }
+    } else if (direction === 'd') {
+      for (let row = 0; row < 4; row++) {
+        const combined = combine(newGrid.slice(row * 4, row * 4 + 4).reverse());
+        for (let col = 0; col < 4; col++) {
+          newGrid[row * 4 + (3 - col)] = combined[col];
+        }
+      }
+    }
+
+    setGrid(newGrid); // Update the grid state
   };
 
   return (
